@@ -6,6 +6,7 @@ def solution(begin, target, words):
     level = 1
     current_layer = {begin}
     next_layer = set()
+    # time complexity: O(n^2), given in method in set is O(1)
     while words_set and current_layer:
         for current_word in current_layer:
             for word in words_set:
@@ -17,7 +18,7 @@ def solution(begin, target, words):
                     if word == target:
                         return level
                     next_layer.add(word)
-            words_set -= next_layer
+            words_set -= next_layer  # doesn't affect the time complexity bc next_layer is always subset of words_set
         current_layer = next_layer
         next_layer = set()
         level += 1
